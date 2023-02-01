@@ -3,11 +3,11 @@ using System;
 public class JournalManager
 {   
     public string[] _loadedFile;
+
     public List<string> _entriesList = new List<string>();
 
     public void Save()
     {
-
         Console.Write($"\nWhat is the file name?\n> ");
         string fileName = Console.ReadLine();
 
@@ -24,9 +24,7 @@ public class JournalManager
             {
                 outputFile.WriteLine($"{item}");
             }
-
         }
-
     }
 
     public string[] Load()

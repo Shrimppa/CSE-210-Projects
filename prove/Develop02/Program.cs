@@ -2,13 +2,11 @@ using System;
 
 class Program
 {
-
     static void Main(string[] args)
     {
         MenuInterface menu = new MenuInterface();
         PromptGenerator prompt = new PromptGenerator();
         JournalManager journal = new JournalManager();
-
 
         menu.Display();
         string userInput = Console.ReadLine();
