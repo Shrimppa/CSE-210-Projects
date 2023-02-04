@@ -8,11 +8,15 @@ public class JournalManager
 
     public void Save()
     {
+        string personalInfo = GoBeyond.GetInfo();
+
         Console.Write($"\nWhat is the file name?\n> ");
         string fileName = Console.ReadLine();
 
         using (StreamWriter outputFile = new StreamWriter(fileName))
         {
+            outputFile.WriteLine($"{personalInfo}");
+
             if (_loadedFile != null)
             {
                 foreach (string item in _loadedFile)
