@@ -1,0 +1,18 @@
+Store a scripture, Including the reference I.E. "John 3:16" and the text of it.
+
+Accommodate scriptures with multiple verses I.E. "John 3:16-17"
+
+Scripture Class - Holds an array of scripture references as keys, 
+                  and the strings of verses as the info in the keys
+
+Console Class - Clears, Displays
+
+UserContinueOrQuit Class - If the user types quit, program ends.
+                           If the user presses enter, the program continues.
+
+Word Class - Takes in a string, and has a method that hides random words in a string
+             Has another method that can show hidden words in a string
+             Has a method that checks if all words have been hidden
+             Has a true / false boolean if something is hidden
+
+In Program.cs - Checks if 
