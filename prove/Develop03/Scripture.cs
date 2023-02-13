@@ -2,7 +2,7 @@ using System;
 
 public class Scripture
 {
-    private string[,] _scriptureArray = {{"Ref 1","Ver 1"},{"Ref 2","Ver 2"},{"Ref 3","Ver 3"}};
+    private string[,] _scriptureArray = {{"Ref 1","Verse Hello Mine now how"},{"Ref 2","Very cool man wow bow"},{"Ref 3","Version hello pie jello mine"}};
 
     private string[] _randomScripture;
 
