@@ -28,7 +28,7 @@ public class ConsoleOutput
 
     public bool Display()
     {
-        Console.WriteLine($"\n{_reference}\n_____________________________________________________________________________________________________________________\n\n{_verse}\n");
+        Console.Write($"\n{_reference}\n_____________________________________________________________________________________________________________________\n\n{_verse}\n\nPress Enter to Continue or type 'quit' to finish: ");
 
         if (_num != 0)
         {
