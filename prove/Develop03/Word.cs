@@ -8,13 +8,13 @@ public class Word
 
     private string[] _changedWords;
 
-    public Word()
+    public void GiveWords()
     {
         _words = "One Two Three Four Five Six".Split(" ");
         _originalWords = "One Two Three Four Five Six";
     }
 
-    public Word(string words)
+    public void GiveWords(string words)
     {
         _words = words.Split(" ");
         _originalWords = words;
@@ -23,51 +23,50 @@ public class Word
 
     public string Hide()
     {
+        Random rand = new Random();
+
         string[] words = _changedWords;
 
         string[] ogWords = _words;
 
-        Random rand = new Random();
+        int numOfWords = words.Count();
 
-        int y = 1;
+        int[] values = Enumerable.Range(0, numOfWords - 0).ToArray();
 
-        foreach (string item in ogWords)
+        var valuesList = values.ToList();
+
+        var editedValuesList = valuesList;
+
+        foreach (var item in valuesList)
         {
-            if (words[y] != item)
+            if (words[item] != ogWords[item])
             {
-                
+                editedValuesList.RemoveAt(item);
             }
-            y += 1;
         }
-
 
         int x = 3;
         while (x != 0)
         {
-            int randomNumber = rand.Next(words.Count());
+            int randomNumber = rand.Next(editedValuesList.Count());
 
-            if (words[randomNumber] == ogWords[randomNumber])
+            // Debug Remove
+            Console.WriteLine($"{editedValuesList[randomNumber]}");
+
+            string word = words[editedValuesList[randomNumber]];
+
+            int charCount = word.Length;
+
+            string newWord = "";
+
+            while (charCount != 0)
             {
-                string word = words[randomNumber];
+                newWord = newWord + "_";
 
-                int charCount = words.Length;
-
-                string newWord = "";
-
-                while (charCount != 0)
-                {
-                    newWord = newWord + "_";
-
-                    charCount -= 1;
-                }
-
-                words[randomNumber] = newWord;
-            }
-            else
-            {
-                
+                charCount -= 1;
             }
 
+            words[editedValuesList[randomNumber]] = newWord;
 
             x -= 1;
             
