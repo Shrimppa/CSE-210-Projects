@@ -8,6 +8,13 @@ public class Word
 
     private string[] _changedWords;
 
+    private bool _fullyHidden = false;
+
+    public bool FullyHidden()
+    {
+        return _fullyHidden;
+    }
+
     public void GiveWords()
     {
         _words = "One Two Three Four Five Six".Split(" ");
@@ -26,8 +33,15 @@ public class Word
         Random rand = new Random();
 
         string[] words = _changedWords;
+        var wordsList = words.ToList();
+        wordsList.RemoveAll(str => String.IsNullOrEmpty(str));
+        words = wordsList.ToArray();
+        
 
         string[] ogWords = _words;
+        var ogWordsList = ogWords.ToList();
+        ogWordsList.RemoveAll(str => String.IsNullOrEmpty(str));
+        ogWords = ogWordsList.ToArray();
 
         int numOfWords = words.Count();
 
@@ -35,44 +49,89 @@ public class Word
 
         var valuesList = values.ToList();
 
-        var editedValuesList = valuesList;
+        List<int> editedValuesList = new List<int> {};
+
+        editedValuesList = valuesList.ToList();
 
         foreach (var item in valuesList)
         {
             if (words[item] != ogWords[item])
             {
-                editedValuesList.RemoveAt(item);
+                if (editedValuesList != null)
+                {
+                    editedValuesList.Remove(item);
+                }
             }
         }
 
         int x = 3;
-        while (x != 0)
+
+        if (editedValuesList.Count != 0)
         {
-            int randomNumber = rand.Next(editedValuesList.Count());
-
-            // Debug Remove
-            Console.WriteLine($"{editedValuesList[randomNumber]}");
-
-            string word = words[editedValuesList[randomNumber]];
-
-            int charCount = word.Length;
-
-            string newWord = "";
-
-            while (charCount != 0)
+            if (editedValuesList.Count != 1 || editedValuesList.Count != 2 || editedValuesList.Count != 3)
             {
-                newWord = newWord + "_";
+                while (x != 0 && editedValuesList.Count != 0)
+                {
+                    int randomNumber = rand.Next(editedValuesList.Count());
 
-                charCount -= 1;
+                    string word = words[editedValuesList[randomNumber]];
+
+                    int charCount = word.Length;
+
+                    string newWord = "";
+
+                    while (charCount != 0)
+                    {
+                        newWord += "_";
+
+                        charCount -= 1;
+
+                        words[editedValuesList[randomNumber]] = newWord;
+
+                        
+                    }
+
+                    editedValuesList.Remove(randomNumber);
+
+                    x -= 1;
+                    
+                    _changedWords = words;
+                }
             }
+            else
+            {
+                foreach (var item in editedValuesList)
+                {
+                    string word = words[editedValuesList[item]];
 
-            words[editedValuesList[randomNumber]] = newWord;
+                    int charCount = word.Length;
 
-            x -= 1;
-            
+                    string newWord = "";
+
+                    while (charCount != 0)
+                    {
+                        newWord += "_";
+
+                        charCount -= 1;
+
+                        words[editedValuesList[item]] = newWord;
+
+                        
+                    }
+
+                    editedValuesList.Remove(item);
+
+                    x -= 1;
+                    
+                    _changedWords = words;
+                }
+            }
+        }
+        else
+        {
+            _fullyHidden = true;
         }
 
-        _changedWords = words;
 
         string formattedString = "";
 

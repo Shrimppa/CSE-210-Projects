@@ -7,6 +7,7 @@ class Program
         ConsoleOutput consoleOut = new ConsoleOutput();
         int x = 1;
 
+        consoleOut.Clear();
         consoleOut.GetData();
         consoleOut.Display();
 
@@ -21,7 +22,11 @@ class Program
             else
             {
                 consoleOut.Clear();
-                consoleOut.Display();
+                bool quit = consoleOut.Display();
+                if (quit == true)
+                {
+                    x = 0;
+                }
             }
         }
     }

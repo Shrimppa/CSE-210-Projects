@@ -6,6 +6,9 @@ public class ConsoleOutput
 
     private string _reference;
 
+    private int _num = 1;
+        
+
     public void GetData()
     {
         Scripture s = new Scripture();
@@ -14,23 +17,30 @@ public class ConsoleOutput
 
         string reference = s.GetScriptureReference();
 
-        _reference = reference;
-        
         string verse = s.GetScriptureVerse();
+     
+        _reference = reference;
 
         _verse = verse;
     }
 
-    public void Display()
+    public Word w = new Word();
+
+    public bool Display()
     {
-        Word w = new Word();
+        Console.WriteLine($"\n{_reference}\n_____________________________________________________________________________________________________________________\n\n{_verse}\n");
 
-        w.GiveWords(_verse);
-
-        Console.WriteLine($"Reference:{_reference} Verse:{_verse}");
+        if (_num != 0)
+        {
+            w.GiveWords(_verse);
+            _num = 0;
+        }
 
         _verse = w.Hide();
 
+        bool quit = w.FullyHidden();
+
+        return quit;
     }
 
     public void Clear()
