@@ -37,7 +37,6 @@ public class Words
         wordsList.RemoveAll(str => String.IsNullOrEmpty(str));
         words = wordsList.ToArray();
         
-
         string[] ogWords = _words;
         var ogWordsList = ogWords.ToList();
         ogWordsList.RemoveAll(str => String.IsNullOrEmpty(str));
@@ -85,8 +84,6 @@ public class Words
                         charCount -= 1;
 
                         words[editedValuesList[randomNumber]] = newWord;
-
-                        
                     }
 
                     editedValuesList.Remove(randomNumber);
@@ -113,8 +110,6 @@ public class Words
                         charCount -= 1;
 
                         words[editedValuesList[item]] = newWord;
-
-                        
                     }
 
                     editedValuesList.Remove(item);
