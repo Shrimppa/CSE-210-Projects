@@ -6,9 +6,6 @@ public class ConsoleOutput
 
     private string _reference;
 
-    private int _num = 1;
-        
-
     public void GetData()
     {
         Scripture s = new Scripture();
@@ -22,25 +19,42 @@ public class ConsoleOutput
         _reference = reference;
 
         _verse = verse;
+
+        w = new Words(_verse);
     }
 
-    public Word w = new Word();
+    public Words w;
 
-    public bool Display()
+    public void Display()
     {
-        Console.Write($"\n{_reference}\n_____________________________________________________________________________________________________________________\n\n{_verse}\n\nPress Enter to Continue or type 'quit' to finish: ");
+        Clear();
+        GetData();
 
-        if (_num != 0)
+        bool quit = false;
+
+        Console.Write($"\n{_reference}\n_____________________________________________________________________________________________________________________\n\n{_verse}\n\nPress Enter to Continue or type 'quit' to finish: ");
+        Console.ReadLine();
+
+        string press = "";
+
+        while (quit != true)
         {
-            w.GiveWords(_verse);
-            _num = 0;
+            Clear();
+            _verse = w.Hide(3);
+            Console.Write($"\n{_reference}\n_____________________________________________________________________________________________________________________\n\n{_verse}\n\nPress Enter to Continue or type 'quit' to finish: ");
+            quit = w.FullyHidden();
+            
+            if (quit != true)
+            {
+                press = Console.ReadLine();
+            }
+
+            if (press == "quit")
+            {
+                quit = true;
+            }
         }
 
-        _verse = w.Hide();
-
-        bool quit = w.FullyHidden();
-
-        return quit;
     }
 
     public void Clear()

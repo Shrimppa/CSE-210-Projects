@@ -1,6 +1,6 @@
 using System;
 
-public class Word
+public class Words
 {
     private string _originalWords;
 
@@ -15,20 +15,20 @@ public class Word
         return _fullyHidden;
     }
 
-    public void GiveWords()
+    public Words()
     {
         _words = "One Two Three Four Five Six".Split(" ");
         _originalWords = "One Two Three Four Five Six";
     }
 
-    public void GiveWords(string words)
+    public Words(string words)
     {
         _words = words.Split(" ");
         _originalWords = words;
         _changedWords = _words;
     }
 
-    public string Hide()
+    public string Hide(int numberOfWordsToHide)
     {
         Random rand = new Random();
 
@@ -64,13 +64,11 @@ public class Word
             }
         }
 
-        int x = 3;
-
         if (editedValuesList.Count != 0)
         {
             if (editedValuesList.Count != 1 || editedValuesList.Count != 2 || editedValuesList.Count != 3)
             {
-                while (x != 0 && editedValuesList.Count != 0)
+                while (numberOfWordsToHide != 0 && editedValuesList.Count != 0)
                 {
                     int randomNumber = rand.Next(editedValuesList.Count());
 
@@ -93,7 +91,7 @@ public class Word
 
                     editedValuesList.Remove(randomNumber);
 
-                    x -= 1;
+                    numberOfWordsToHide -= 1;
                     
                     _changedWords = words;
                 }
@@ -121,7 +119,7 @@ public class Word
 
                     editedValuesList.Remove(item);
 
-                    x -= 1;
+                    numberOfWordsToHide -= 1;
                     
                     _changedWords = words;
                 }
