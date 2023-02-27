@@ -1,0 +1,14 @@
+
+Activity parent class - subclasses = breathing, reflecting, listing
+breathing - Breathing activity - may have another set of sub classes
+reflecting - Reflecting activity - may have another set of sub classes
+listing - Listing activity - may have another set of sub classes
+
+Display parent class - subclasses = menu, animation
+menu - Has a menu stored inside
+animaiton - Can be used to display custom animations
+
+UserInteraction parent class - subclasses = time, choice, response
+time - Used to specify time amounts from a user
+choice - Used to help choose options
+response - Holds user responses to save in a file
