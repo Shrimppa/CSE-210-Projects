@@ -8,7 +8,7 @@ public class MainLoop
 
         Display menu = new Menu();
 
-        Choice menuChoice = new Choice();
+        UserInteraction menuChoice = new UserInteraction();
 
         Activity a1 = new Breathing();
         Activity a2 = new Reflecting();
@@ -19,7 +19,8 @@ public class MainLoop
             menu.ClearConsole();
             menu.DisplayResults();
 
-            choice = menuChoice.Choose();
+            menuChoice.SetUserInput();
+            choice = menuChoice.GetUserInput();
 
             if (choice == "1")
             {

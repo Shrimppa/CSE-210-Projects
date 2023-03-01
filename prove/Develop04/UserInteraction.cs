@@ -2,14 +2,20 @@ using System;
 
 public class UserInteraction
 {
-    protected string _userInput;
+    protected dynamic _userInput;
 
-    public virtual string GetUserInput()
+    public dynamic GetUserInput()
     {
         return _userInput;
     }
 
-    public void SetUserInput(string input)
+    public virtual void SetUserInput()
+    {
+        string input = Console.ReadLine();
+        _userInput = input;
+    }
+
+    public virtual void SetUserInput(string input)
     {
         _userInput = input;
     }
