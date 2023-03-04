@@ -41,5 +41,13 @@ public class MainLoop
                 Thread.Sleep(3000);
             }
         }    
+
+        if (choice == "4")
+        {
+            Console.Clear();
+            Console.WriteLine("Wait no don't go ;-; I love doing these activities with you!");
+            Thread.Sleep(2500);
+            Console.Clear();
+        }
     }
 }
