@@ -2,9 +2,11 @@ using System;
 
 public class MainLoop
 {
+    private static List<Activity> _activityList = new List<Activity>{};
+
     public void StartProgram()
     {
-        string choice = "0";
+        dynamic choice = 0;
 
         Display menu = new Menu();
 
@@ -14,27 +16,24 @@ public class MainLoop
         Activity a2 = new Reflecting();
         Activity a3 = new Listing();
 
-        while (choice != "4")
+        _activityList.Add(a1);
+        _activityList.Add(a2);
+        _activityList.Add(a3);
+
+       List<Activity> activityList = _activityList;
+
+        while (choice != 4)
         {
             menu.ClearConsole();
             menu.DisplayResults();
 
             menuChoice.SetUserInput();
             choice = menuChoice.GetUserInput();
+            choice = int.Parse(choice);
 
-            if (choice == "1")
-            {
-                a1.StartActivity();
-            }
-            else if (choice == "2")
-            {
-                a2.StartActivity();
-            }
-            else if (choice == "3")
-            {
-                a3.StartActivity();
-            }
-            else if (choice != "4")
+            activityList[choice].StartActivity();
+
+            if (choice != "4")
             {
                 menu.ClearConsole();
                 Console.WriteLine("Please input '1', '2', '3', or '4'.");
