@@ -6,7 +6,7 @@ public class MainLoop
 
     public void StartProgram()
     {
-        dynamic choice = 0;
+        int choice = 0;
 
         Display menu = new Menu();
 
@@ -28,12 +28,12 @@ public class MainLoop
             menu.DisplayResults();
 
             menuChoice.SetUserInput();
-            choice = menuChoice.GetUserInput();
-            choice = int.Parse(choice);
+            string choice1 = menuChoice.GetUserInput();
+            choice = int.Parse(choice1);
 
             activityList[choice].StartActivity();
 
-            if (choice != "4")
+            if (choice != 4)
             {
                 menu.ClearConsole();
                 Console.WriteLine("Please input '1', '2', '3', or '4'.");
@@ -41,7 +41,7 @@ public class MainLoop
             }
         }    
 
-        if (choice == "4")
+        if (choice == 4)
         {
             Console.Clear();
             Console.WriteLine("Wait no don't go ;-; I love doing these activities with you!");
