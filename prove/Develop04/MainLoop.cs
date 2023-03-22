@@ -47,7 +47,7 @@ public class MainLoop
             Console.Clear();
             Console.WriteLine("Wait no don't go ;-; I love doing these activities with you!");
             Thread.Sleep(2500);
-            Console.Clear();
+            Console.Clear(); 
         }
     }
 }
